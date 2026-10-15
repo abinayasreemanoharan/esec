@@ -1,0 +1,11 @@
+{
+  "name": "SiteGuard AI Worker Safety",
+  "short_name": "SiteGuard AI",
+  "description": "Construction site safety monitoring prototype",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#06101f",
+  "theme_color": "#071426",
+  "icons": []
+}
