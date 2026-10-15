@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071426">
+  <title>SiteGuard AI | Worker Safety</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="bubbles" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand"><span>⬡</span> SITEGUARD <b>AI</b></div>
+    <div class="connection"><i id="dot"></i><span id="network">Checking...</span></div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">CONSTRUCTION INTELLIGENCE PLATFORM</p>
+        <h1>Worker Safety <span>Command Center</span></h1>
+        <p class="muted">Monitor hazards. Protect every worker. Respond faster.</p>
+      </div>
+      <div class="hero-icon">🦺</div>
+    </section>
+
+    <section class="stats">
+      <article class="card"><p>REGISTERED WORKERS</p><h2 id="workers">48</h2><small>Demo site data</small></article>
+      <article class="card"><p>OPEN INCIDENTS</p><h2 id="openCount">0</h2><small>Needs attention</small></article>
+      <article class="card"><p>SITE RISK SCORE</p><h2 id="risk">0<span>/100</span></h2><strong id="riskLevel">LOW RISK</strong></article>
+      <article class="card"><p>OFFLINE REPORTS</p><h2 id="pending">0</h2><small>Waiting to sync</small></article>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="section-title"><span>📷</span><div><h2>PPE Safety Checker</h2><p>Upload a sample image or video for review</p></div></div>
+        <input type="file" id="ppeFile" accept="image/*,video/*">
+        <button class="button secondary" id="ppeButton">Check PPE Sample</button>
+        <p id="ppeResult" class="notice">A trained PPE detection model is required for real helmet/vest detection.</p>
+      </article>
+
+      <article class="panel">
+        <div class="section-title"><span>⚠️</span><div><h2>Dangerous Zone Alert</h2><p>Simulated worker location test</p></div></div>
+        <label for="zone">Worker zone</label>
+        <select id="zone">
+          <option value="Safe Zone">Safe Zone</option>
+          <option value="Crane Zone">Crane Zone</option>
+          <option value="Excavation Zone">Excavation Zone</option>
+          <option value="Restricted Zone">Restricted Zone</option>
+        </select>
+        <button class="button secondary" id="zoneButton">Simulate Location</button>
+        <p id="zoneResult" class="notice">Location is simulated, not live GPS.</p>
+      </article>
+
+      <article class="panel sos-panel">
+        <div class="section-title"><span>🆘</span><div><h2>Worker Emergency SOS</h2><p>Send an incident report to the supervisor</p></div></div>
+        <form id="sosForm">
+          <label for="workerId">Worker ID</label>
+          <input id="workerId" name="worker_id" placeholder="e.g. WRK-102" required>
+          <label for="location">Last reported location</label>
+          <input id="location" name="location" placeholder="e.g. Block A / Crane Zone" required>
+          <label for="incident">Emergency details</label>
+          <select id="incident" name="incident">
+            <option>Worker injured - assistance required</option>
+            <option>Fall hazard / near miss</option>
+            <option>PPE violation</option>
+            <option>Dangerous zone entry</option>
+            <option>Equipment emergency</option>
+            <option>Other safety issue</option>
+          </select>
+          <label for="photo">Attach camera photo or video (optional)</label>
+          <input id="photo" name="photo" type="file" accept="image/*,video/*" capture="environment">
+          <button class="button danger" type="submit">🚨 Send SOS Report</button>
+          <p id="sosResult" class="notice">If offline, the report is queued on this device and is not yet delivered.</p>
+        </form>
+        <a class="call-button" href="tel:112" id="call112">Call India's emergency number 112</a>
+      </article>
+
+      <article class="panel">
+        <div class="section-title"><span>🛡️</span><div><h2>Safety Action Plan</h2><p>Recommended first response</p></div></div>
+        <ul class="actions">
+          <li><b>PPE violation</b><span>Stop unsafe work; provide required PPE.</span></li>
+          <li><b>Danger-zone entry</b><span>Warn worker and notify site supervisor.</span></li>
+          <li><b>Injury / SOS</b><span>Contact trained site responders and emergency services.</span></li>
+          <li><b>Equipment hazard</b><span>Isolate the area using approved site procedures.</span></li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel history">
+      <div class="section-title"><span>📋</span><div><h2>Incident History</h2><p>Recent reports and corrective action status</p></div></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>ID</th><th>Worker</th><th>Location</th><th>Incident</th><th>Time</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="incidentRows"><tr><td colspan="7">Loading incidents...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>SiteGuard AI · Safety prototype · Offline reports sync when connection returns</footer>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>
